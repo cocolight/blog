@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>python 常见加密解密 | 云的小站</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://alili.website/favicon.ico?v=1694055521884">
+<link rel="stylesheet" href="https://alili.website/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="Url Encode 加密、unicode 加密、MD5、PBKDF2、SHA、HMAC、DES、3DES、AES、AES ECB PKC7 模式、RC4、Rabbit、RSA、模块 Cryptodome
+
+url encode加密
+简介：..." />
+    <meta name="keywords" content="python" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://alili.website">
+        <img src="https://alili.website/images/avatar.png?v=1694055521884" class="site-logo">
+        <h1 class="site-title">云的小站</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="https://alili.website" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="https://alili.website/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="https://alili.website/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://alili.website/about" class="site-nav">
+            关于
+          </a>
+        
+      
+        
+          <a href="https://alili.website/friends/" class="site-nav">
+            友链
+          </a>
+        
+      
+        
+          <a href="https://cocolight.github.io/nav/" class="site-nav" target="_blank">
+            导航
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/cocolight" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/yu-yu-yu-86-85-42" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <a class="social-link" href="https://blog.csdn.net/qq_38830593?spm=1000.2115.3001.5343" target="_blank">
+            <i class="fab fa-cuttlefish"></i>
+          </a>
+        
+      
+    </div>
+    <div class="site-description">
+      学思并重 省察克治
+    </div>
+    <div class="site-footer">
+      <a href="https://icp.gov.moe/?keyword=20230676" target="_blank">萌ICP备20230676号</a> | <a class="rss" href="https://alili.website/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">python 常见加密解密</h2>
+            <div class="post-date">2023-09-05</div>
+            
+            <div class="post-content" v-pre>
+              <p>Url Encode 加密、unicode 加密、MD5、PBKDF2、SHA、HMAC、DES、3DES、AES、AES ECB PKC7 模式、RC4、Rabbit、RSA、模块 Cryptodome</p>
+<!-- more -->
+<h1 id="url-encode加密">url encode加密</h1>
+<p>简介：当url地址含有中文，或者参数有中文的时候，这个算是很正常了，但是把这样的url作为参数传递的时候（最常见的callback）、需要把一些中文甚至'/'做一下编码转换。</p>
+<pre><code class="language-python">
+# -*- coding: utf-8 -*-
+# @Time    : 2022/9/29 10:43
+# home.php?mod=space&amp;uid=686208  : lzc
+# home.php?mod=space&amp;uid=621973   : hybpjx@163.com
+# home.php?mod=space&amp;uid=267492    : utilsMiddlewares.py
+# @cnblogs : https://www.cnblogs.com/zichliang/
+# @Software: PyCharm
+
+import urllib.parse
+
+
+text = &quot;我爱吃鸡腿&quot;
+s = urllib.parse.quote(text)
+print(s) # %E6%88%91%E7%88%B1%E5%90%83%E9%B8%A1%E8%85%BF
+u = urllib.parse.unquote(s)
+print(u) #我爱吃鸡腿
+</code></pre>
+<h1 id="unicode-加密">unicode 加密</h1>
+<p>其实这应该不算一种加密 更多的应该算是一种编码与解码但是由于运用很广泛 我也加进去了</p>
+<pre><code class="language-python"># -*- coding: utf-8 -*-
+# @Time    : 2023/2/28 10:43
+# @Author  : lzc
+# @Email   : hybpjx@163.com
+# @File    : utilsMiddlewares.py
+# @cnblogs : https://www.cnblogs.com/zichliang/
+# @Software: PyCharm
+
+str1 = &quot;你好&quot;
+
+
+# 编码
+enStr1 = str1.encode('unicode-escape').decode()
+print(enStr1) # \u4f60\u597d
+
+
+# 解码
+deStr1 = enStr1.encode().decode('unicode-escape')
+print(deStr1) # 你好
+</code></pre>
+<h1 id="base64-加密">Base64 加密</h1>
+<p>简介：Base64 是一种用 64 个字符来表示任意二进制数据的方法。</p>
+<pre><code class="language-python"># -*- coding: utf-8 -*-
+# @Time    : 2022/9/29 10:43
+# @Author  : lzc
+# @Email   : hybpjx@163.com
+# @File    : utilsMiddlewares.py
+# @cnblogs : https://www.cnblogs.com/zichliang/
+# @Software: PyCharm
+
+import base64
+
+def base64_encode(text):
+    encode_data = base64.b64encode(text.encode())
+    return encode_data
+
+def base64_decode(encode_data):
+    decode_data = base64.b64decode(encode_data)
+    return decode_data
+
+if __name__ == '__main__':
+
+    text = 'I love Python!'
+    encode_data = base64_encode(text)
+    decode_data = base64_decode(encode_data)
+    print('Base64 编码：', encode_data)
+    print('Base64 解码：', decode_data)
+
+    # Base64 编码： b'SSBsb3ZlIFB5dGhvbiE='
+# Base64 解码： b'I love Python!'
+</code></pre>
+<h1 id="md5">MD5</h1>
+<p>简介：全称 MD5 消息摘要算法（英文名称：MD5 Message-Digest Algorithm），又称哈希算法、散列算法，由美国密码学家罗纳德·李维斯特（Ronald Linn Rivest）设计，于 1992 年作为 RFC 1321 被公布，用以取代 MD4 算法。摘要算法是单向加密的，也就是说明文通过摘要算法加密之后，是不能解密的。摘要算法的第二个特点密文是固定长度的，它通过一个函数，把任意长度的数据转换为一个长度固定的数据串（通常用16进制的字符串表示）。之所以叫摘要算法，它的算法就是提取明文重要的特征。所以，两个不同的明文，使用了摘要算法之后，有可能他们的密文是一样的，不过这个概率非常的低。</p>
+<pre><code class="language-python"># -*- coding: utf-8 -*-
+# @Time    : 2022/9/29 10:43
+# @Author  : lzc
+# @Email   : hybpjx@163.com
+# @File    : utilsMiddlewares.py
+# @cnblogs : https://www.cnblogs.com/zichliang/
+# @Software: PyCharm
+
+
+import hashlib
+
+
+def md5_test1():
+    md5 = hashlib.new('md5', 'I love python!'.encode('utf-8'))
+    print(md5.hexdigest())
+
+
+def md5_test2():
+    md5 = hashlib.md5()
+    md5.update('I love '.encode('utf-8'))
+    md5.update('python!'.encode('utf-8'))
+    print(md5.hexdigest())
+
+
+if __name__ == '__main__':
+    md5_test1()  # 21169ee3acd4a24e1fcb4322cfd9a2b8
+    md5_test2()  # 21169ee3acd4a24e1fcb4322cfd9a2b8
+</code></pre>
+<h1 id="pbkdf2">PBKDF2</h1>
+<p>简介：英文名称：Password-Based Key Derivation Function 2，PBKDF2 是 RSA 实验室的公钥加密标准（PKCS）系列的一部分，2017 年发布的 RFC 8018 （PKCS #5 v2.1）推荐使用 PBKDF2 进行密码散列。PBKDF2 将伪随机函数（例如 HMAC），把明文和一个盐值（salt）作为输入参数，然后进行重复运算，并最终产生密钥，如果重复的次数足够大，破解的成本就会变得很高。</p>
+<pre><code class="language-python">
+# -*- coding: utf-8 -*-
+# @Time    : 2022/9/29 10:43
+# @Author  : lzc
+# @Email   : hybpjx@163.com
+# @File    : utilsMiddlewares.py
+# @cnblogs : https://www.cnblogs.com/zichliang/
+# @Software: PyCharm
+
+
+import binascii
+from Cryptodome.Hash import SHA1
+from Cryptodome.Protocol.KDF import PBKDF2
+
+
+text = 'I love Python!'
+salt = b'43215678'
+result = PBKDF2(text,  salt, count=10, hmac_hash_module=SHA1)
+result = binascii.hexlify(result)
+print(result)
+# b'7fee6e8350cfe96314c76aaa6e853a50'
+</code></pre>
+<h1 id="sha">SHA</h1>
+<p>简介：全称安全哈希算法（英文名称：Secure Hash Algorithm），由美国国家安全局（NSA）所设计，主要适用于数字签名标准（Digital Signature Standard DSS）里面定义的数字签名算法（Digital Signature Algorithm DSA），SHA 通常指 SHA 家族的五个算法，分别是 SHA-1、SHA-224、SHA-256、SHA-384、SHA-512，后四者有时并称为 SHA-2，SHA 是比 MD5 更安全一点的摘要算法，MD5 的密文是 32 位，而 SHA-1 是 40 位，版本越强，密文越长，代价是速度越慢。</p>
+<pre><code class="language-python"># -*- coding: utf-8 -*-
+# @Time    : 2022/9/29 10:43
+# @Author  : lzc
+# @Email   : hybpjx@163.com
+# @File    : utilsMiddlewares.py
+# @cnblogs : https://www.cnblogs.com/zichliang/
+# @Software: PyCharm
+
+
+import hashlib
+
+
+def sha1_test1():
+    sha1 = hashlib.new('sha1', 'I love python!'.encode('utf-8'))
+    print(sha1.hexdigest())
+
+
+def sha1_test2():
+    sha1 = hashlib.sha1()
+    sha1.update('I love python!'.encode('utf-8'))
+    print(sha1.hexdigest())
+
+
+if __name__ == '__main__':
+    sha1_test1()  # 23c02b203bd2e2ca19da911f1d270a06d86719fb
+    sha1_test2()  # 23c02b203bd2e2ca19da911f1d270a06d86719fb
+</code></pre>
+<h1 id="hmac">HMAC</h1>
+<p>简介：全称散列消息认证码、密钥相关的哈希运算消息认证码（英文名称：Hash-based Message Authentication Code 或者 Keyed-hash Message Authentication Code），于 1996 年提出，1997 年作为 RFC 2104 被公布，HMAC 加密算法是一种安全的基于加密 Hash函数和共享密钥的消息认证协议，它要求通信双方共享密钥 key、约定算法、对报文进行 Hash 运算，形成固定长度的认证码。通信双方通过认证码的校验来确定报文的合法性。</p>
+<pre><code class="language-python">
+# -*- coding: utf-8 -*-
+# @Time    : 2022/9/29 10:43
+# @Author  : lzc
+# @Email   : hybpjx@163.com
+# @File    : utilsMiddlewares.py
+# @cnblogs : https://www.cnblogs.com/zichliang/
+# @Software: PyCharm
+
+import hmac
+
+
+def hmac_test1():
+    message = b'I love python!'
+    key = b'secret'
+    md5 = hmac.new(key, message, digestmod='MD5')
+    print(md5.hexdigest())
+
+
+def hmac_test2():
+    key = 'secret'.encode('utf8')
+    sha1 = hmac.new(key, digestmod='sha1')
+    sha1.update('I love '.encode('utf8'))
+    sha1.update('Python!'.encode('utf8'))
+    print(sha1.hexdigest())
+
+
+if __name__ == '__main__':
+    hmac_test1()  # 9c503a1f852edcc3526ea56976c38edf
+    hmac_test2()  # 2d8449a4292d4bbeed99ce9ea570880d6e19b61a
+</code></pre>
+<h1 id="des">DES</h1>
+<p>简介：全称数据加密标准（英文名称：Data Encryption Standard），加密与解密使用同一密钥，属于对称加密算法，1977 年被美国联邦政府的国家标准局确定为联邦资料处理标准（FIPS），DES 是一个分组加密算法，使用 56 位的密钥（一般认为密钥是 64 位，但是密钥的每个第 8 位设置为奇偶校验位，所以实际上有效位只有 56 位），由于 56 位密钥长度相对较短，所以 DES 是不安全的，现在基本上已被更高级的加密标准 AES 取代。<br>
+mode 支持：CBC，CFB，CTR，CTRGladman，ECB，OFB 等。<br>
+padding 支持：ZeroPadding，NoPadding，AnsiX923，Iso10126，Iso97971，Pkcs7 等。</p>
+<pre><code class="language-python">
+# -*- coding: utf-8 -*-
+# @Time    : 2022/9/29 10:43
+# @Author  : lzc
+# @Email   : hybpjx@163.com
+# @File    : utilsMiddlewares.py
+# @cnblogs : https://www.cnblogs.com/zichliang/
+# @Software: PyCharm
+
+
+import binascii
+# 加密模式 CBC，填充方式 PAD_PKCS5
+from pyDes import des, CBC, PAD_PKCS5
+
+
+def des_encrypt(key, text, iv):
+    k = des(key, CBC, iv, pad=None, padmode=PAD_PKCS5)
+    en = k.encrypt(text, padmode=PAD_PKCS5)
+    return binascii.b2a_hex(en)
+
+def des_decrypt(key, text, iv):
+    k = des(key, CBC, iv, pad=None, padmode=PAD_PKCS5)
+    de = k.decrypt(binascii.a2b_hex(text), padmode=PAD_PKCS5)
+    return de
+
+if __name__ == '__main__':
+    secret_key = '12345678'   # 密钥
+    text = 'I love Python!'   # 加密对象
+    iv = secret_key           # 偏移量
+    secret_str = des_encrypt(secret_key, text, iv)
+    print('加密字符串：', secret_str)
+    clear_str = des_decrypt(secret_key, secret_str, iv)
+    print('解密字符串：', clear_str)
+
+    # 加密字符串： b'302d3abf2421169239f829b38a9545f1'
+
+    # 解密字符串： b'I love Python!'
+</code></pre>
+<h1 id="3des">3DES</h1>
+<p>简介：全称三重数据加密算法（英文名称：Triple Data Encryption Standard、Triple Data Encryption Algorithm、TDES、TDEA），是对称加密算法中的一种。70 年代初由 IBM 研发，后 1977 年被美国国家标准局采纳为数据加密标准，它相当于是对每个数据块应用三次 DES 加密算法。由于计算机运算能力的增强，原版 DES 密码的密钥长度变得容易被暴力破解；3DES 即是设计用来提供一种相对简单的方法，即通过增加 DES 的密钥长度来避免破解，所以严格来说 3DES 不是设计一种全新的块密码算法。<br>
+mode 支持：CBC，CFB，CTR，CTRGladman，ECB，OFB 等。<br>
+padding 支持：ZeroPadding，NoPadding，AnsiX923，Iso10126，Iso97971，Pkcs7 等。</p>
+<pre><code class="language-python">
+# -*- coding: utf-8 -*-
+# @Time    : 2022/9/29 10:43
+# @Author  : lzc
+# @Email   : hybpjx@163.com
+# @File    : utilsMiddlewares.py
+# @cnblogs : https://www.cnblogs.com/zichliang/
+# @Software: PyCharm
+
+
+from Cryptodome.Cipher import DES3
+from Cryptodome import Random
+
+
+# 需要补位，str不是16的倍数那就补足为16的倍数
+
+def add_to_16(value):
+    while len(value) % 16 != 0:
+        value += '\0'
+    return str.encode(value)
+
+def des_encrypt(key, text, iv):
+    # 加密模式 OFB
+    cipher_encrypt = DES3.new(add_to_16(key), DES3.MODE_OFB, iv)
+    encrypted_text = cipher_encrypt.encrypt(text.encode(&quot;utf-8&quot;))
+    return encrypted_text
+
+def des_decrypt(key, text, iv):
+    # 加密模式 OFB
+    cipher_decrypt = DES3.new(add_to_16(key), DES3.MODE_OFB, iv)
+    decrypted_text = cipher_decrypt.decrypt(text)
+    return decrypted_text
+
+if __name__ == '__main__':
+    key = '12345678'            # 密钥，16 位
+    text = 'I love Python!'     # 加密对象
+    iv = Random.new().read(DES3.block_size)  # DES3.block_size == 8
+    secret_str = des_encrypt(key, text, iv)
+    print('加密字符串：', secret_str)
+    clear_str = des_decrypt(key, secret_str, iv)
+    print('解密字符串：', clear_str)
+
+# 加密字符串： b'\xa5\x8a\xd4R\x99\x16j\xba?vg\xf2\xb6\xa9'
+# 解密字符串： b'I love Python!'
+</code></pre>
+<h1 id="aes">AES</h1>
+<p>简介：全称高级加密标准（英文名称：Advanced Encryption Standard），在密码学中又称 Rijndael 加密法，由美国国家标准与技术研究院 （NIST）于 2001 年发布，并在 2002 年成为有效的标准，是美国联邦政府采用的一种区块加密标准。这个标准用来替代原先的 DES，已经被多方分析且广为全世界所使用，它本身只有一个密钥，即用来实现加密，也用于解密。<br>
+mode 支持：CBC，CFB，CTR，CTRGladman，ECB，OFB 等。<br>
+padding 支持：ZeroPadding，NoPadding，AnsiX923，Iso10126，Iso97971，Pkcs7 等。</p>
+<pre><code class="language-python"># -*- coding: utf-8 -*-
+# @Time    : 2022/9/29 10:43
+# @Author  : lzc
+# @Email   : hybpjx@163.com
+# @File    : utilsMiddlewares.py
+# @cnblogs : https://www.cnblogs.com/zichliang/
+# @Software: PyCharm
+
+import base64
+from Cryptodome.Cipher import AES
+
+# 需要补位，str不是16的倍数那就补足为16的倍数
+
+def add_to_16(value):
+    while len(value) % 16 != 0:
+        value += '\0'
+    return str.encode(value)
+
+
+
+# 加密方法
+def aes_encrypt(key, t, iv):
+    aes = AES.new(add_to_16(key), AES.MODE_CBC, add_to_16(iv))  # 初始化加密器
+    encrypt_aes = aes.encrypt(add_to_16(t)) # 先进行 aes 加密
+    # 执行加密并转码返回 bytes
+    encrypted_text = str(base64.encodebytes(encrypt_aes), encoding='utf-8')  
+    return encrypted_text
+
+
+# 解密方法
+def aes_decrypt(key, t, iv):
+    # 初始化加密器
+    aes = AES.new(add_to_16(key), AES.MODE_CBC, add_to_16(iv))     
+    # 优先逆向解密 base64 成 bytes   
+    base64_decrypted = base64.decodebytes(t.encode(encoding='utf-8')) 
+    # 执行解密密并转码返回str 
+    decrypted_text = str(aes.decrypt(base64_decrypted), encoding='utf-8').replace('\0', '')  
+    return decrypted_text
+
+
+if __name__ == '__main__':
+    secret_key = '12345678'   # 密钥
+    text = 'I love Python!'   # 加密对象
+    iv = secret_key           # 初始向量
+    encrypted_str = aes_encrypt(secret_key, text, iv)
+    print('加密字符串：', encrypted_str)
+    decrypted_str = aes_decrypt(secret_key, encrypted_str, iv)
+    print('解密字符串：', decrypted_str)
+
+# 加密字符串： lAVKvkQh+GtdNpoKf4/mHA==
+# 解密字符串： I love Python!
+</code></pre>
+<h1 id="aes-ecb-pkc7-模式">AES ECB PKC7 模式</h1>
+<pre><code class="language-python">from Cryptodome.Cipher import AES
+from Cryptodome.Util.Padding import pad
+
+def aes_cipher(key, aes_str):
+    # 使用key,选择加密方式
+    aes = AES.new(key.encode('utf-8'), AES.MODE_ECB)
+    pad_pkcs7 = pad(aes_str.encode('utf-8'), AES.block_size, style='pkcs7')  # 选择pkcs7补全
+    encrypt_aes = aes.encrypt(pad_pkcs7)
+    # 加密结果
+    encrypted_text = str(base64.encodebytes(encrypt_aes), encoding='utf-8')  # 解码
+    encrypted_text_str = encrypted_text.replace(&quot;\n&quot;, &quot;&quot;)
+    # 此处我的输出结果老有换行符，所以用了临时方法将它剔除
+    return encrypted_text_str
+</code></pre>
+<h1 id="rc4">RC4</h1>
+<p>简介：英文名称：Rivest Cipher 4，也称为 ARC4 或 ARCFOUR，是一种流加密算法，密钥长度可变。它加解密使用相同的密钥，因此也属于对称加密算法。RC4 是有线等效加密（WEP）中采用的加密算法，也曾经是 TLS 可采用的算法之一，该算法的速度可以达到 DES 加密的 10 倍左右，且具有很高级别的非线性，虽然它在软件方面的简单性和速度非常出色，但在 RC4 中发现了多个漏洞，它特别容易受到攻击，RC4 作为一种老旧的验证和加密算法易于受到黑客攻击，现在逐渐不推荐使用了。</p>
+<pre><code class="language-python">
+# -*- coding: utf-8 -*-
+# @Time    : 2022/9/29 10:43
+# @Author  : lzc
+# @Email   : hybpjx@163.com
+# @File    : utilsMiddlewares.py
+# @cnblogs : https://www.cnblogs.com/zichliang/
+# @Software: PyCharm
+
+import base64
+from Cryptodome.Cipher import ARC4
+
+
+def rc4_encrypt(key, t):
+    enc = ARC4.new(key.encode('utf8'))
+    res = enc.encrypt(t.encode('utf-8'))
+    res = base64.b64encode(res)
+    return res
+
+def rc4_decrypt(key, t):
+    data = base64.b64decode(t)
+    enc = ARC4.new(key.encode('utf8'))
+    res = enc.decrypt(data)
+    return res
+
+if __name__ == &quot;__main__&quot;:
+    secret_key = '12345678'   # 密钥
+    text = 'I love Python!'   # 加密对象
+    encrypted_str = rc4_encrypt(secret_key, text)
+    print('加密字符串：', encrypted_str)
+    decrypted_str = rc4_decrypt(secret_key, encrypted_str)
+    print('解密字符串：', decrypted_str)
+
+# 加密字符串： b'8tNVu3/U/veJR2KgyBw='
+# 解密字符串： b'I love Python!'
+</code></pre>
+<h1 id="rabbit">Rabbit</h1>
+<p>简介：Rabbit 加密算法是一个高性能的流密码加密方式，2003 年首次被提出，它从 128 位密钥和 64 位初始向量（iv）创建一个密钥流。目前没有找到有第三方库可以直接实现 Rabbit 算法，在 Python 中实现可以参考：https://asecuritysite.com/encryption/rabbit2</p>
+<h1 id="rsa">RSA</h1>
+<p>简介：英文名称：Rivest-Shamir-Adleman，是 1977 年由罗纳德·李维斯特（Ron Rivest）、阿迪·萨莫尔（Adi Shamir）和伦纳德·阿德曼（Leonard Adleman）一起提出的，RSA 就是他们三人姓氏开头字母拼在一起组成的，RSA 加密算法是一种非对称加密算法。在公开密钥加密和电子商业中RSA被广泛使用。它被普遍认为是目前比较优秀的公钥方案之一。RSA是第一个能同时用于加密和数字签名的算法，它能够抵抗到目前为止已知的所有密码攻击。</p>
+<pre><code class="language-python">
+# -*- coding: utf-8 -*-
+# @Time    : 2022/9/29 10:43
+# @Author  : lzc
+# @Email   : hybpjx@163.com
+# @File    : utilsMiddlewares.py
+# @cnblogs : https://www.cnblogs.com/zichliang/
+# @Software: PyCharm
+
+import rsa
+
+
+def rsa_encrypt(pu_key, t):
+    # 公钥加密
+    rsa = rsa.encrypt(t.encode(&quot;utf-8&quot;), pu_key)
+    return rsa
+
+def rsa_decrypt(pr_key, t):
+    # 私钥解密
+    rsa = rsa.decrypt(t, pr_key).decode(&quot;utf-8&quot;)
+    return rsa
+
+
+if __name__ == &quot;__main__&quot;:
+    public_key, private_key = rsa.newkeys(512)   # 生成公钥、私钥
+    print('公钥：', public_key)
+    print('私钥：', private_key)
+    text = 'I love Python!'  # 加密对象
+    encrypted_str = rsa_encrypt(public_key, text)
+    print('加密字符串：', encrypted_str)
+    decrypted_str = rsa_decrypt(private_key, encrypted_str)
+    print('解密字符串：', decrypted_str)
+
+'''
+
+公钥： PublicKey(7636479066127060956100056267701318377455704072072698049978592945665550579944731953431504993757594103617537700972424661030900303472123028864161050235168613, 65537)
+
+私钥： PrivateKey(7636479066127060956100056267701318377455704072072698049978592945665550579944731953431504993757594103617537700972424661030900303472123028864161050235168613, 65537, 3850457767980968449796700480128630632818465005441846698224554128042451115530564586537997896922067523638756079019054611200173122138274839877369624069360253, 4713180694194659323798858305046043997526301456820208338158979730140812744181638767, 1620238976946735819854194349514460863335347861649166352709029254680140139)
+
+加密字符串： b&quot;\x1aaeps\xa0c}\xb6\xcf\xa3\xb0\xbb\xedA\x7f}\x03\xdc\xd5\x1c\x9b\xdb\xda\xf9q\x80[=\xf5\x91\r\xd0'f\xce\x1f\x01\xef\xa5\xdb3\x96\t0qIxF\xbd\x11\xd6\xb25\xc5\xe1pM\xb4M\xc2\xd4\x03\xa6&quot;
+
+解密字符串： I love Python!
+
+'''
+</code></pre>
+<h1 id="模块-cryptodome">模块 Cryptodome：</h1>
+<pre><code class="language-python"># -*- coding: utf-8 -*-
+# @Time    : 2022/9/29 10:43
+# @Author  : lzc
+# @Email   : hybpjx@163.com
+# @File    : utilsMiddlewares.py
+# @cnblogs : https://www.cnblogs.com/zichliang/
+# @Software: PyCharm
+
+import base64
+from Cryptodome.PublicKey import RSA
+from Cryptodome.Cipher import PKCS1_v1_5
+
+
+data = &quot;cKK8B2rWwfwWeXhz&quot;
+public_key = &quot;MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAM1xhOWaThSMpfxFsjV5YaWOFHt+6RvS+zH2Pa47VVr8PkZYnRaaKKy2MYBuEh7mZfM/R1dUXTgu0gp6VTNeNQkCAwEAAQ==&quot;
+rsa_key = RSA.import_key(base64.b64decode(public_key))  # 导入读取到的公钥
+cipher = PKCS1_v1_5.new(rsa_key)                        # 生成对象
+cipher_text = base64.b64encode(cipher.encrypt(data.encode(encoding=&quot;utf-8&quot;)))
+print(cipher_text)
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://alili.website/L3g3LKUGb/" class="tag">
+                    python
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://alili.website/wen-dang-mi-ma-yi-chu-gong-ju/">
+                  <h3 class="post-title">
+                    文档密码移除工具
+                  </h3>
+                </a>
+              </div>
+            
+            
+              
+                
+                  <div id="gitalk-container" data-aos="fade-in"></div>
+                
+
+                
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '51dc7e5c6e3d91e7a383',
+        clientSecret: '9e83eeb9fd892183749421e9d1604b44eaf2b351',
+        repo: 'blog-comment',
+        owner: 'cocolight',
+        admin: ['cocolight'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

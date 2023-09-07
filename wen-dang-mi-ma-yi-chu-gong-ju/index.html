@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>文档密码移除工具 | 云的小站</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://alili.website/favicon.ico?v=1694055521884">
+<link rel="stylesheet" href="https://alili.website/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="📯支持移除PDF、XLSX、PPTX文档的保护密码
+✏️解除限制编辑的密码，可以自由复制、编辑
+📚支持上述格式文件批量处理，解放生产力
+
+
+下载地址：蓝奏云
+密码：37cb
+功能说明
+批量移除限制编辑密码；移除PDF、xlsx、pptx..." />
+    <meta name="keywords" content="工具开发" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://alili.website">
+        <img src="https://alili.website/images/avatar.png?v=1694055521884" class="site-logo">
+        <h1 class="site-title">云的小站</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="https://alili.website" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="https://alili.website/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="https://alili.website/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://alili.website/about" class="site-nav">
+            关于
+          </a>
+        
+      
+        
+          <a href="https://alili.website/friends/" class="site-nav">
+            友链
+          </a>
+        
+      
+        
+          <a href="https://cocolight.github.io/nav/" class="site-nav" target="_blank">
+            导航
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/cocolight" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/yu-yu-yu-86-85-42" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <a class="social-link" href="https://blog.csdn.net/qq_38830593?spm=1000.2115.3001.5343" target="_blank">
+            <i class="fab fa-cuttlefish"></i>
+          </a>
+        
+      
+    </div>
+    <div class="site-description">
+      学思并重 省察克治
+    </div>
+    <div class="site-footer">
+      <a href="https://icp.gov.moe/?keyword=20230676" target="_blank">萌ICP备20230676号</a> | <a class="rss" href="https://alili.website/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">文档密码移除工具</h2>
+            <div class="post-date">2023-09-04</div>
+            
+              <div class="feature-container" style="background-image: url('https://alili.website/post-images/wen-dang-mi-ma-yi-chu-gong-ju.png')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <p>📯支持移除PDF、XLSX、PPTX文档的保护密码<br>
+✏️解除限制编辑的密码，可以自由复制、编辑<br>
+📚支持上述格式文件批量处理，解放生产力</p>
+<!-- more -->
+<figure data-type="image" tabindex="1"><img src="https://alili.website/post-images/1693805362547.png" alt="" loading="lazy"></figure>
+<p>下载地址：<a href="https://wwde.lanzouj.com/b01e2zqqf">蓝奏云</a><br>
+密码：<code>37cb</code></p>
+<h2 id="功能说明">功能说明</h2>
+<p>批量移除限制编辑密码；移除PDF、xlsx、pptx限制密码输出文件在源路径，结果名称带_removepwd<br>
+只能移除文档限制编辑的密码解密不了加密文件。</p>
+<h2 id="更新日志">更新日志</h2>
+<p><strong>V 0.3.1</strong>:<br>
+更新日期：2023-07-21<br>
+修复：错误路径导致程序卡死</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://alili.website/uDr2W3xPc/" class="tag">
+                    工具开发
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://alili.website/er-cha-shu-san-chong-bian-li-fang-shi/">
+                  <h3 class="post-title">
+                    二叉树遍历方式
+                  </h3>
+                </a>
+              </div>
+            
+            
+              
+                
+                  <div id="gitalk-container" data-aos="fade-in"></div>
+                
+
+                
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '51dc7e5c6e3d91e7a383',
+        clientSecret: '9e83eeb9fd892183749421e9d1604b44eaf2b351',
+        repo: 'blog-comment',
+        owner: 'cocolight',
+        admin: ['cocolight'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Gridea+GitPage+Gittalk 搭建个人博客 | 云的小站</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://alili.website/favicon.ico?v=1694055521884">
+<link rel="stylesheet" href="https://alili.website/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="👋通过Gridea+GitPage 搭建属于自己的博客！
+👻GitPage 负责提供 Web 功能！
+😽Gridea 作为本地编辑器，方便 push 文章！
+🏷本文讲解如何使用 Gridea+GitPage 服务+域名（可选）搭建个..." />
+    <meta name="keywords" content="Gridea" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://alili.website">
+        <img src="https://alili.website/images/avatar.png?v=1694055521884" class="site-logo">
+        <h1 class="site-title">云的小站</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="https://alili.website" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="https://alili.website/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="https://alili.website/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://alili.website/about" class="site-nav">
+            关于
+          </a>
+        
+      
+        
+          <a href="https://alili.website/friends/" class="site-nav">
+            友链
+          </a>
+        
+      
+        
+          <a href="https://cocolight.github.io/nav/" class="site-nav" target="_blank">
+            导航
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/cocolight" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/yu-yu-yu-86-85-42" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <a class="social-link" href="https://blog.csdn.net/qq_38830593?spm=1000.2115.3001.5343" target="_blank">
+            <i class="fab fa-cuttlefish"></i>
+          </a>
+        
+      
+    </div>
+    <div class="site-description">
+      学思并重 省察克治
+    </div>
+    <div class="site-footer">
+      <a href="https://icp.gov.moe/?keyword=20230676" target="_blank">萌ICP备20230676号</a> | <a class="rss" href="https://alili.website/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Gridea+GitPage+Gittalk 搭建个人博客</h2>
+            <div class="post-date">2023-08-30</div>
+            
+              <div class="feature-container" style="background-image: url('https://alili.website/post-images/grideagitpage-da-jian-ge-ren-bo-ke.png')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <p>👋通过Gridea+GitPage 搭建属于自己的博客！<br>
+👻GitPage 负责提供 Web 功能！<br>
+😽Gridea 作为本地编辑器，方便 push 文章！<br>
+🏷本文讲解如何使用 Gridea+GitPage 服务+域名（可选）搭建个人博客！</p>
+<!-- more -->
+<h2 id="前置准备">前置准备</h2>
+<ul>
+<li>Github 账号</li>
+<li>下载好 Gridea</li>
+<li>域名（可选）</li>
+</ul>
+<h2 id="零-搭建步骤">零、搭建步骤</h2>
+<ol>
+<li>创建 github 仓库，用来存放你的 Blog；</li>
+<li>为该仓库开启 GitPage 服务，开启从 web 访问你的 Blog 的功能；</li>
+<li>开启 Token ，便于 Girdea 访问仓库并推送文章；</li>
+<li>配置 Gridea，开启 blog 远程访问，自定义主题等；</li>
+<li>个性化域名设置（可选）；</li>
+<li>为博客添加评论功能（可选）；</li>
+<li>增加百度统计（可选）；</li>
+<li>添加访问量显示（可选）；</li>
+<li>CND加速，加速国内访问速度（可选）；</li>
+</ol>
+<h2 id="一-创建仓库">一、创建仓库</h2>
+<ol>
+<li>首先<a href="https://github.com/login">登录你的 github</a></li>
+<li>然后点击你头像左侧的 【+】，下拉菜单 【New repository】开始新建仓库</li>
+<li>填写仓库信息：
+<ol>
+<li>在<code>Repository name</code>下边的方框填上你的仓库名；</li>
+<li>在<code>Description (optional)</code>填写上你关于这个仓库的描述，一会生成<code>README</code>用；</li>
+<li>勾选上 <code>Add a README file</code>。</li>
+</ol>
+</li>
+<li>然后点击【Create repository】创建完成</li>
+</ol>
+<h2 id="二-开启-gitpage">二、开启 GitPage</h2>
+<ol>
+<li>进入你刚创建好的仓库中，点击上方的【Settings】进入设置；</li>
+<li>点击左侧的【Pages】找到<code>Branch</code>，将下边的分支选为<code>master</code>；</li>
+<li>勾选下方的<code>Enforce HTTPS</code>强制启用 HTTPS 访问；</li>
+<li>上方会提示<strong>Your site is live at http://xxx.github.io/仓库名</strong>，点击右方的 【Visit site】就可以访问你的博客了。</li>
+</ol>
+<h2 id="三-开启-token">三、开启 Token</h2>
+<p>开启 Token 可以通过 Token 来访问你的 github，具体步骤如下：</p>
+<ol>
+<li>点击的的头像，在弹出的菜单中，点击下方的【Settings】；</li>
+<li>点击左侧最下方的【Developer settings】；</li>
+<li>找到左侧的【Personal access tokens】展开，点击下方的【Tokens(classic)】；</li>
+<li>点击最上方的【Generate new token】展开，点击【Generate new token(classic)】；</li>
+<li>在新的页面中的<code>Note</code>中填入你创建这个Token的目的，随便填；</li>
+<li><code>Expiration</code>是指这个 Token 的有效期，按需选择；</li>
+<li>最后勾选下边的<code>repo</code>。</li>
+</ol>
+<h2 id="四-配置-gridea">四、配置 Gridea</h2>
+<ol>
+<li>点击左侧的【远程】，进入到<code>基础配置</code>；</li>
+<li>按如下方式填写：<br>
+<img src="https://alili.website/post-images/1693636352285.png" alt="" loading="lazy"></li>
+</ol>
+<h2 id="五-自定义域名可选">五、自定义域名（可选）</h2>
+<p>首先需要准备你自己的域名，可以去域名商买，这里以腾讯云为例：<br>
+进入你的域名控制台，找到你的域名，点击【解析】，记录类型选择<code>CNAME</code>，记录值填上你的 GitPage 网址；<br>
+<img src="https://alili.website/post-images/1693637082382.png" alt="" loading="lazy"></p>
+<p>这里要改两部分的内容：GitPage 和 Gridea 设置，具体如下：</p>
+<ol>
+<li>GitPage，找到<code>Custom domain</code>，填上你的域名，点击【save】；</li>
+<li>Gridea，将上边步骤四的<code>域名</code>和<code>CNAME</code>中填上你的域名。</li>
+</ol>
+<h2 id="六-添加评论功能可选">六、添加评论功能（可选）</h2>
+<p>参见：<a href="https://vlieo.com/post/config-gitalk-in-the-gridea/">在Gridea中配置Gitalk评论系统——记忆一隅</a><br>
+📘Note：Gittalk 使用的仓库可以和博客不是同一个仓库。</p>
+<h2 id="七-增加百度统计可选">七、增加百度统计（可选）</h2>
+<p>参考：<a href="https://github.com/getgridea/gridea/issues/558">gridea #issue 558</a></p>
+<h2 id="八-添加访问量显示可选">八、添加访问量显示（可选）</h2>
+<p>参见：<a href="https://alastor.top/blog_time/">网站添加存活时间显示</a></p>
+<h2 id="九-利用-cloudflare-加速国内访问可选">九、利用 Cloudflare 加速国内访问（可选）</h2>
+<p>参见：<a href="https://www.cnblogs.com/yuelblog/p/15829774.html">GitHub pages+自定义域名(腾讯云域名)+cloudflare加速</a><br>
+📘Note：不是很稳定，感觉没有折腾的必要。</p>
+<h2 id="常见问题">常见问题</h2>
+<ol>
+<li>
+<p>Gridea 同步失败<br>
+<strong>描述</strong>：在开启魔法🪄上网后，点击<code>同步</code>按钮始终失败。<br>
+<strong>方案</strong>：点击打开<code>远程配置</code>选项，按以下路径设置：<code>HTTP代理</code>-&gt;<code>Proxy</code>-&gt;<code>地址：127.0.0.1</code>-&gt;<code>端口：7890（你自己的魔法工具代理的本地端口）</code></p>
+</li>
+<li>
+<p>主题不加载CSS样式<br>
+<strong>描述</strong>：使用自定义域名后，访问博客没有主题样式<br>
+<strong>方案</strong>：将 Gridea 的【远程设置】中<code>域名</code>和<code>CNAME</code>都换成自己的域名即可</p>
+</li>
+</ol>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://alili.website/EG3qn7Ye9/" class="tag">
+                    Gridea
+                  </a>
+                
+              </div>
+            
+            
+            
+              
+                
+                  <div id="gitalk-container" data-aos="fade-in"></div>
+                
+
+                
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '51dc7e5c6e3d91e7a383',
+        clientSecret: '9e83eeb9fd892183749421e9d1604b44eaf2b351',
+        repo: 'blog-comment',
+        owner: 'cocolight',
+        admin: ['cocolight'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://alili.website</id>
+    <title>云的小站</title>
+    <updated>2023-09-07T02:58:43.007Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://alili.website"/>
+    <link rel="self" href="https://alili.website/atom.xml"/>
+    <subtitle>学思并重 省察克治</subtitle>
+    <logo>https://alili.website/images/avatar.png</logo>
+    <icon>https://alili.website/favicon.ico</icon>
+    <rights>All rights reserved 2023, 云的小站</rights>
+    <entry>
+        <title type="html"><![CDATA[图的基本定义]]></title>
+        <id>https://alili.website/tu-de-ji-ben-ding-yi/</id>
+        <link href="https://alili.website/tu-de-ji-ben-ding-yi/">
+        </link>
+        <updated>2023-09-05T05:19:01.000Z</updated>
+        <summary type="html"><![CDATA[<p>顶点的度、入度、出度；顶点，顶点关系的描述；连通图、强连通图；子图、生成子图；连通分量、强连通分量；生成树、生成森林；边的权、带权图/网；几种特殊的图</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>顶点的度、入度、出度；顶点，顶点关系的描述；连通图、强连通图；子图、生成子图；连通分量、强连通分量；生成树、生成森林；边的权、带权图/网；几种特殊的图</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[python 常见加密解密]]></title>
+        <id>https://alili.website/python-chang-jian-jia-mi-jie-mi/</id>
+        <link href="https://alili.website/python-chang-jian-jia-mi-jie-mi/">
+        </link>
+        <updated>2023-09-04T22:54:49.000Z</updated>
+        <summary type="html"><![CDATA[<p>Url Encode 加密、unicode 加密、MD5、PBKDF2、SHA、HMAC、DES、3DES、AES、AES ECB PKC7 模式、RC4、Rabbit、RSA、模块 Cryptodome</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Url Encode 加密、unicode 加密、MD5、PBKDF2、SHA、HMAC、DES、3DES、AES、AES ECB PKC7 模式、RC4、Rabbit、RSA、模块 Cryptodome</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[文档密码移除工具]]></title>
+        <id>https://alili.website/wen-dang-mi-ma-yi-chu-gong-ju/</id>
+        <link href="https://alili.website/wen-dang-mi-ma-yi-chu-gong-ju/">
+        </link>
+        <updated>2023-09-04T05:22:49.000Z</updated>
+        <summary type="html"><![CDATA[<p>📯支持移除PDF、XLSX、PPTX文档的保护密码<br>
+✏️解除限制编辑的密码，可以自由复制、编辑<br>
+📚支持上述格式文件批量处理，解放生产力</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>📯支持移除PDF、XLSX、PPTX文档的保护密码<br>
+✏️解除限制编辑的密码，可以自由复制、编辑<br>
+📚支持上述格式文件批量处理，解放生产力</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[二叉树遍历方式]]></title>
+        <id>https://alili.website/er-cha-shu-san-chong-bian-li-fang-shi/</id>
+        <link href="https://alili.website/er-cha-shu-san-chong-bian-li-fang-shi/">
+        </link>
+        <updated>2023-09-02T06:59:16.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Docker部署NginxProxyManager]]></title>
+        <id>https://alili.website/docker-bu-shu-nginxproxymanager/</id>
+        <link href="https://alili.website/docker-bu-shu-nginxproxymanager/">
+        </link>
+        <updated>2023-09-01T05:48:16.000Z</updated>
+        <summary type="html"><![CDATA[<p>众所周知 NGINX 有着很强大的反代能力，不过很多人懒得自己去配置，这就诞生了一个及其易用的 NGINX 反代程序，可以让你点几下鼠标就能顺利实现反代。<br>
+转载自：<a href="https://pickstar.today/2022/09/%E4%B8%80%E4%B8%AA%E6%98%93%E4%B8%8A%E6%89%8B%E7%9A%84nginx%E5%8F%8D%E4%BB%A3%E7%A8%8B%E5%BA%8F-nginxproxymanager/">一个易上手的NGINX反代程序——NginxProxyManager.静心前行</a></p>
+]]></summary>
+        <content type="html"><![CDATA[<p>众所周知 NGINX 有着很强大的反代能力，不过很多人懒得自己去配置，这就诞生了一个及其易用的 NGINX 反代程序，可以让你点几下鼠标就能顺利实现反代。<br>
+转载自：<a href="https://pickstar.today/2022/09/%E4%B8%80%E4%B8%AA%E6%98%93%E4%B8%8A%E6%89%8B%E7%9A%84nginx%E5%8F%8D%E4%BB%A3%E7%A8%8B%E5%BA%8F-nginxproxymanager/">一个易上手的NGINX反代程序——NginxProxyManager.静心前行</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[比特率和波特率的区别]]></title>
+        <id>https://alili.website/bi-te-lu-he-bo-te-lu-de-qu-bie/</id>
+        <link href="https://alili.website/bi-te-lu-he-bo-te-lu-de-qu-bie/">
+        </link>
+        <updated>2023-09-01T00:29:57.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Gridea+GitPage+Gittalk 搭建个人博客]]></title>
+        <id>https://alili.website/grideagitpage-da-jian-ge-ren-bo-ke/</id>
+        <link href="https://alili.website/grideagitpage-da-jian-ge-ren-bo-ke/">
+        </link>
+        <updated>2023-08-30T07:46:22.000Z</updated>
+        <summary type="html"><![CDATA[<p>👋通过Gridea+GitPage 搭建属于自己的博客！<br>
+👻GitPage 负责提供 Web 功能！<br>
+😽Gridea 作为本地编辑器，方便 push 文章！<br>
+🏷本文讲解如何使用 Gridea+GitPage 服务+域名（可选）搭建个人博客！</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>👋通过Gridea+GitPage 搭建属于自己的博客！<br>
+👻GitPage 负责提供 Web 功能！<br>
+😽Gridea 作为本地编辑器，方便 push 文章！<br>
+🏷本文讲解如何使用 Gridea+GitPage 服务+域名（可选）搭建个人博客！</p>
+]]></content>
+    </entry>
+</feed>
